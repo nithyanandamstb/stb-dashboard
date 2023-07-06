@@ -1,0 +1,28 @@
+{
+  "name": "stb-dashboard",
+  "version": "0.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "stb-dashboard",
+    "description": "Description of Stb Dashboard plugin",
+    "kind": "plugin",
+    "displayName": "Stb Dashboard"
+  },
+  "dependencies": {
+    "react-google-charts": "^4.0.0",
+    "text-animations-react": "^0.1.8"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
