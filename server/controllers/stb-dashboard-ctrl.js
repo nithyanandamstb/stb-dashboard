@@ -9,25 +9,46 @@
 //module.exports = createCoreController('plugin::stb-dashboard.stb-dashboard');
 
 module.exports = ({ strapi }) => ({
+    // GET CHART DETAILS
+    async get_charts(ctx) {
+        try {
+            return await strapi.plugin('stb-dashboard').service('dataBaseService').selectAll();
+        } catch (error) {
+            ctx.throw(500, error);
+        }
+    },
+    // GET FORMS ENTRY COUNT FOR CHART
     async form_entry_count(ctx) {
         var dashBoard = [];
         try {            
             if(ctx?.query?.model_name && ctx?.query?.date_option) {
                 let dateOption = ctx?.query?.date_option;
                 let modelName = ctx?.query?.model_name;
+                let form_name = ctx?.query?.form_name;
                 let dates = getBetweenDays(dateOption);
                 let wQry = "";
+                let dateLabel = "";
                 if(dates) {
-                    dates.map((date,idx) => {
+                    let frmEntryCount = await Promise.all(dates.map(async (date,idx) => (
+                        dateLabel = convertYearMonth(dateOption, date?.start_date),
+                        wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":form_name},
+                            {
+                                "id":idx,
+                                "status": dateLabel,
+                                "value": await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, wQry)
+                            }
+                        )));
+                    dashBoard = frmEntryCount;
+                    /*dates.map((date,idx) => {
                         console.log(date)
                         let dateLabel = convertYearMonth(dateOption, date?.start_date);
-                        wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":"General Enquiry"}
+                        wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":form_name}
                         
                         new Promise(async(resolve) => {
-                            let frmEntryCount = await strapi.plugin('stb-dashboard').service('dataBaseService').form_entry_count(modelName, wQry);
-                            resolve(dashBoard.push({"id":idx,"date":dateLabel,"count":frmEntryCount}));
+                            let frmEntryCount = await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, wQry);
+                            resolve(dashBoard.push({"id":idx,"date":dateLabel,"value":frmEntryCount}));
                         });
-                    });
+                    });*/
                 }
             }
             return await new Promise(resolve => {
@@ -39,7 +60,46 @@ module.exports = ({ strapi }) => ({
         } catch (error) {
             ctx.throw(500, error);
         }        
-    },    
+    },
+    // GET PROPERTIES COUNT FOR CHART
+    async properties_count(ctx) {
+        var dashBoard = {};
+        
+        try {            
+            if(ctx?.query?.model_name && ctx?.query?.date_option) {
+                let searchType = ctx?.query?.search_type;
+                let department = ctx?.query?.department;
+                let dateOption = ctx?.query?.date_option;
+                let statusVal = ctx?.query?.status.split(",");
+                let modelName = ctx?.query?.model_name;
+                let date = getFromAndTodDate(dateOption);
+                let wQry = {"publish":1};
+                //console.log(statusVal)
+                if(date && statusVal) {
+                    wQry ["updated_at"] = { $between: [date?.start_date,date?.end_date]};
+                    if(searchType!="" && searchType!=undefined) {
+                        wQry['search_type'] = searchType;
+                    }
+                    if(department!="" && department!=undefined) {
+                        wQry['department'] = department;
+                    }
+                    let propEntries = await Promise.all(statusVal.map(async (status,idx) => ({
+                        "id":idx,
+                        "status": status,
+                        "value": await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status})
+                    })));
+                    dashBoard = propEntries;
+                }
+            }            
+            return await new Promise(resolve => {
+                setTimeout(() => {
+                  resolve(dashBoard)
+                }, 2000)
+            });
+        } catch (error) {
+            ctx.throw(500, error);
+        }        
+    },
     async create(ctx) {
         try {
             ctx.body = await strapi.plugin('stb-dashboard').service('stbDashboardService').create(ctx.request.body);
@@ -47,32 +107,10 @@ module.exports = ({ strapi }) => ({
             ctx.throw(500, error);
         }        
     },
-    /*
-    async find(ctx) {
-        try {
-            return await strapi.plugin('stb-dashboard').service('stbDashboardService').find(ctx.query);
-        } catch (error) {
-            ctx.throw(500, error);
-        }        
-    },
-    async update(ctx) {
-        try {
-            ctx.body = await strapi.plugin('stb-dashboard').service('stbDashboardService').update(ctx.params.id,ctx.request.body);
-        } catch (error) {
-            ctx.throw(500, error);
-        }        
-    },
-    async delete(ctx) {
-        try {
-            ctx.body = await strapi.plugin('stb-dashboard').service('stbDashboardService').delete(ctx.params.id);
-        } catch (error) {
-            ctx.throw(500, error);
-        }        
-    },*/
 });
 
 /* GET FROM AND TO DATE */
-const getFromAndTodDate = () => {
+const getFromAndTodDate = (diffD) => {
     var date = new Date();
     var toDate = (date.getFullYear() ) + '-' + ('0' + (date.getMonth()+Number(1))).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
     var month = date.getMonth()+Number(1);
@@ -91,7 +129,7 @@ const getFromAndTodDate = () => {
         }   
     }
     var fromDate = (date.getFullYear() ) + '-' + ('0' + date.getMonth()).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-    return {"from_date":fromDate,"to_date":toDate};
+    return {"start_date":fromDate+" 00:00:00","end_date":toDate+" 23:59:59"};
 }
 /* GET DAYS BETWEEN TWO DATE */
 const getBetweenDays = (diffD) =>{

@@ -7,40 +7,24 @@ module.exports = [
       policies: [],
       auth: false
     },
-  }, 
-  /*
+  },
   {
     method: 'GET',
-    path: '/find',
-    handler: 'stbDashboardCtrl.find',
+    path: '/get-charts',
+    handler: 'stbDashboardCtrl.get_charts',
     config: {
       policies: [],
       auth: false
     },
   },
   {
-    method: 'POST',
-    path: '/create',
-    handler: 'stbDashboardCtrl.create',
+    method: 'GET',
+    path: '/properties-count',
+    handler: 'stbDashboardCtrl.properties_count',
     config: {
       policies: [],
       auth: false
     },
-  },
-  {
-    method: 'PUT',
-    path: '/update/:id',
-    handler: 'stbDashboardCtrl.update',
-    config: {
-      policies: []
-    },
-  },
-  {
-    method: 'PUT',
-    path: '/delete/:id',
-    handler: 'stbDashboardCtrl.delete',
-    config: {
-      policies: []
-    },
-  },*/
+  }, 
+  
 ];

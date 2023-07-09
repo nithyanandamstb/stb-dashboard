@@ -7,12 +7,15 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import pluginId from '../../pluginId';
-import { BaseHeaderLayout, Box } from '@strapi/design-system';
+import { ContentLayout, Box } from '@strapi/design-system';
+import RenderChats from "./render";
+import Header from "../../components/header"
 
 const HomePage = () => {
   return (
     <Box background="neutral100">
-      <BaseHeaderLayout primaryAction={""} secondaryAction={""} title="Dashboard" subtitle="--" as="h2" />
+      <Header />
+      <RenderChats date_option={1} />
     </Box>
   );
 };
