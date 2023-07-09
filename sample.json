@@ -1,0 +1,125 @@
+[
+    {
+      "data": {
+        "type": "properties",
+        "status": "Sale Agreed,For Sale,Sold",
+        "chartType": "PieChart",
+        "department": "residential",
+        "model_name": "api::property.property",
+        "search_type": "sales"
+      },
+      "options": {
+        "is3D": true,
+        "title": "For Sale",
+        "chartArea": {
+          "width": "80%"
+        },
+        "titleTextStyle": {
+          "color": "#000",
+          "fontSize": "20"
+        }
+      }
+    },
+    {
+      "data": {
+        "type": "stb_forms",
+        "color": "#4945ff",
+        "formName": "Arrange a Viewing",
+        "chartType": "ColumnChart",
+        "model_name": "plugin::stb-forms.stb-form"
+      },
+      "options": {
+        "is3D": true,
+        "hAxis": {
+          "title": "Month",
+          "direction": -1,
+          "textStyle": {
+            "color": "#000",
+            "fontSize": "12"
+          },
+          "slantedText": true,
+          "titleTextStyle": {
+            "italic": "false",
+            "direction": "-1",
+            "slantedText": "true",
+            "slantedTextAngle": "45"
+          },
+          "slantedTextAngle": 45
+        },
+        "title": "Book A Viewing",
+        "vAxis": {
+          "title": "Book A Viewing",
+          "textStyle": {
+            "bold": "true",
+            "color": "#000",
+            "fontSize": "12"
+          },
+          "titleTextStyle": {
+            "italic": "false"
+          }
+        },
+        "legend": {
+          "position": "none"
+        },
+        "subtitle": "Month Wise",
+        "chartArea": {
+          "width": "80%"
+        },
+        "titleTextStyle": {
+          "color": "#000",
+          "fontSize": "20"
+        }
+      }
+    },
+    {
+      "data": {
+        "type": "stb_forms",
+        "color": "#45ff4e",
+        "formName": "Valuation",
+        "chartType": "AreaChart",
+        "model_name": "plugin::stb-forms.stb-form"
+      },
+      "options": {
+        "hAxis": {
+          "title": "Month",
+          "direction": -1,
+          "textStyle": {
+            "color": "#000",
+            "fontSize": "12"
+          },
+          "slantedText": true,
+          "titleTextStyle": {
+            "italic": "false",
+            "direction": "-1",
+            "slantedText": "true",
+            "slantedTextAngle": "45"
+          },
+          "slantedTextAngle": 45
+        },
+        "title": "Valuation",
+        "vAxis": {
+          "title": "Valuation",
+          "textStyle": {
+            "bold": "true",
+            "color": "#000",
+            "fontSize": "12"
+          },
+          "titleTextStyle": {
+            "italic": "false"
+          }
+        },
+        "legend": {
+          "position": "none"
+        },
+        "subtitle": "Month Wise",
+        "chartArea": {
+          "width": "80%"
+        },
+        "pointsVisible": true,
+        "titleTextStyle": {
+          "color": "#000",
+          "fontSize": "20"
+        }
+      }
+    }
+  ]

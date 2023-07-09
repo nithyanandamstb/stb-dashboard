@@ -39,16 +39,6 @@ module.exports = ({ strapi }) => ({
                             }
                         )));
                     dashBoard = frmEntryCount;
-                    /*dates.map((date,idx) => {
-                        console.log(date)
-                        let dateLabel = convertYearMonth(dateOption, date?.start_date);
-                        wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":form_name}
-                        
-                        new Promise(async(resolve) => {
-                            let frmEntryCount = await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, wQry);
-                            resolve(dashBoard.push({"id":idx,"date":dateLabel,"value":frmEntryCount}));
-                        });
-                    });*/
                 }
             }
             return await new Promise(resolve => {
