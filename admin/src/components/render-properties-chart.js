@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Chart } from "react-google-charts";
 import pluginId from '../pluginId';
 const FormBoard = (props) => {
-    console.log("log",props)
+    //console.log("log",props)
     if(props && props?.chartinfo) {
         const chartinfo = props?.chartinfo;
         const options = chartinfo?.options;
@@ -10,7 +10,7 @@ const FormBoard = (props) => {
         const [dateOption,setDateOption] = useState(0);
         const [isLoading, setIsLoading] = useState(true);
         const fetchFormBoard = async (dataVal) => {
-          console.log("log dataoption","Loading...."+dataVal)
+          //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
           await axios.get('http://localhost:1337/stb-dashboard/properties-count',{
@@ -22,7 +22,7 @@ const FormBoard = (props) => {
                 date_option: dataVal
             },
           }).then(response => {
-                  console.log("log data", response.data);
+                  //console.log("log data", response.data);
                   setChartData(response.data);
                   setIsLoading(false);
           }).catch(error => {
@@ -31,10 +31,9 @@ const FormBoard = (props) => {
         }
         var renderData = [];
         renderData.push(["Status","Count"]);
-        console.log("log",chartData);
+        //console.log("log",chartData);
         if(chartData) {
-            chartData.map((item,i)=>{             
-                console.log("log",item[0]?.value)   
+            chartData.map((item,i)=>{
                 renderData.push([item?.status,item?.value]);
             });
         }

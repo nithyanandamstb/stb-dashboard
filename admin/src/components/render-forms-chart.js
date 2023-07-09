@@ -11,7 +11,7 @@ const FormBoard = (props) => {
         const [dateOption,setDateOption] = useState(0);
         const [isLoading, setIsLoading] = useState(true);
         const fetchFormBoard = async (dataVal) => {
-          console.log("log dataoption","Loading...."+dataVal)
+          //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
           await axios.get('http://localhost:1337/stb-dashboard/form-entry-count',{

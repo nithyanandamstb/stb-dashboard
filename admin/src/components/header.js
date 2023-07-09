@@ -1,7 +1,8 @@
 import React, { useState, useEffect,useCallback } from 'react';
 import { BaseHeaderLayout, Box, ContentLayout } from '@strapi/design-system';
 import CustomCss from '../../src/custom.css'
-export default function App() {
+export default function App(props) {
+  //console.log("log",props);
   const [dateOption,setDateOption] = useState(1);
   return (    
       <BaseHeaderLayout primaryAction={
@@ -13,7 +14,10 @@ export default function App() {
           { value: "4", text: "Last 30 days" },
           { value: "5", text: "Last 7 days" },
         ]}
-        onChange={(data) => {console.log("log",data); setDateOption(data?.value)}}
+        onChange={(data) => {
+          //console.log("log",data); 
+          props.onSelectDate(data?.value)
+        }}
       />
       } title="Dashboard" subtitle="--" as="h2" />
   );
