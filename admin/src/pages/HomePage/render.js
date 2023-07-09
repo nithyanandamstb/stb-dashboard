@@ -10,10 +10,10 @@ const FormBoard = (props) => {
         if(isLoading===false) setIsLoading(true);
         const axios = require('axios');
         await axios.get('http://localhost:1337/stb-dashboard/get-charts',{}).then(response => {
-                setChartConfigJson(response.data);
-                setIsLoading(false);
+            setChartConfigJson(response.data);
+            setIsLoading(false);
         }).catch(error => {
-                console.error(error);
+            console.error(error);
         });
     }
     useEffect(async () => {
@@ -24,7 +24,7 @@ const FormBoard = (props) => {
     }, [props]);
     return(
         <>
-        {chartConfigJson &&           
+        {chartConfigJson ?
             <Grid gap={{
                 desktop: 5,
                 tablet: 2,
@@ -40,7 +40,9 @@ const FormBoard = (props) => {
                     }
                     </GridItem>
                 )}
-            </Grid>           
+            </Grid>
+            :
+            <>Chart Content type data is empty</>
         }
          </>
     )
