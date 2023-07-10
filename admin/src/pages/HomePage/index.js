@@ -13,7 +13,7 @@ import Header from "../../components/header"
 
 const HomePage = () => {
   const [dateOption,setDateOption] = useState(1);
-  
+  console.log("log","loading......")
   return (
     <Box background="neutral100">
       <Header onSelectDate={setDateOption} />
