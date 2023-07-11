@@ -26,5 +26,14 @@ module.exports = [
       auth: false
     },
   }, 
+  {
+    method: 'GET',
+    path: '/get-card-values',
+    handler: 'stbDashboardCtrl.get_card_values',
+    config: {
+      policies: [],
+      auth: false
+    },
+  }, 
   
 ];

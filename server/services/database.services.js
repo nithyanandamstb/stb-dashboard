@@ -10,7 +10,7 @@
 
 module.exports = ({ strapi }) => ({
     async count(modelName, cond = {}) {
-        console.log(cond)
+        //console.log(cond)
         return await strapi.db.query(modelName).count({
             where: cond
         });

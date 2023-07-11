@@ -7,15 +7,15 @@
     "displayName": "Stb Dashboard"
   },
   "options": {
-    "draftAndPublish": true,
+    "draftAndPublish": false,
     "comment": ""
   },
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string",
       "required": true
     },
-    "board_type": {
+    "Board_Type": {
       "type": "enumeration",
       "enum": [
         "Chart",
@@ -23,12 +23,12 @@
       ],
       "required": true
     },
-    "enabled": {
+    "Enabled": {
       "type": "boolean",
       "default": true,
       "required": true
     },
-    "options": {
+    "Options": {
       "type": "json"
     }
   }
