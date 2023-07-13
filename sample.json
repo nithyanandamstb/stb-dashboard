@@ -80,6 +80,27 @@
       },
       {
         "data": {
+          "type": "properties",
+          "status": "Let,To Let,Valuation",
+          "chartType": "PieChart",
+          "department": "residential",
+          "model_name": "api::property.property",
+          "search_type": "lettings"
+        },
+        "options": {
+          "is3D": true,
+          "title": "To Let",
+          "chartArea": {
+            "width": "80%"
+          },
+          "titleTextStyle": {
+            "color": "#000",
+            "fontSize": "20"
+          }
+        }
+      },
+      {
+        "data": {
           "type": "stb_forms",
           "color": "#4945ff",
           "formName": "Arrange a Viewing",
