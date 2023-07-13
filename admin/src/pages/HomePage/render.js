@@ -10,7 +10,7 @@ const DashBoard = (props) => {
     const getCharsAndCards = async () => {
         if(isLoading===false) setIsLoading(true);
         const axios = require('axios');
-        await axios.get('http://localhost:1337/stb-dashboard/get-charts',{}).then(response => {
+        await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/get-charts',{}).then(response => {
             setChartConfigJson(response.data);
             setIsLoading(false);
         }).catch(error => {
@@ -24,18 +24,9 @@ const DashBoard = (props) => {
         <>
         {chartConfigJson ?
             <>
-            <Grid gap={{
-                desktop: 5,
-                tablet: 2,
-                mobile: 1
-            }}>
-                {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Card" && item?.Options &&
-                    <GridItem background="neutral100" padding={1} col={12} s={12}>
-                      <RenderCards cardinfo={item?.Options} date_option={props.date_option}/>
-                    </GridItem>
-                )}
-            </Grid>
-
+            {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Card" && item?.Options &&
+                <RenderCards cardinfo={item?.Options} date_option={props.date_option}/>
+            )}
             <Grid gap={{
                 desktop: 5,
                 tablet: 2,

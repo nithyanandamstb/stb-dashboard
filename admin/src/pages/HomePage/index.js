@@ -13,7 +13,18 @@ import Header from "../../components/header"
 
 const HomePage = () => {
   const [dateOption,setDateOption] = useState(1);
-  console.log("log","DashBoard")
+  const [time, setTime] = useState(Date.now());
+  useEffect(() => {
+    if (window !== undefined) {
+      const timer = window.setInterval(() => {
+        window.location.reload();
+      }, (60000*5));
+    
+      return () => { 
+        window.clearInterval(timer);
+      }
+    }
+  }, []);
   return (
     <Box background="neutral100">
       <Header onSelectDate={setDateOption} />

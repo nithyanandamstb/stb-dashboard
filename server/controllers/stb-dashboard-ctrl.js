@@ -104,14 +104,14 @@ module.exports = ({ strapi }) => ({
                 dateOptions.map((dateOpt,idx) => { 
                     dates.push(getFromAndTodDate(dateOpt));
                 })
-                console.log(dates)
+                //console.log(dates)
                 var subBoard = {}
                 if(dates && form_names){
                     let total_form_count = await Promise.all(form_names.map(async (form, idx1) => (
                         subBoard = {},
                         subBoard['card_name'] = form,
                         subBoard['data'] = await Promise.all(dates.map(async (date, idx2) => (
-                            console.log( "log", form,"+",date),
+                            //console.log( "log", form,"+",date),
                             wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":form},
                             {
                                 "id":idx2,

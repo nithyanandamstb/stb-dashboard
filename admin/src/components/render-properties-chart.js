@@ -13,7 +13,7 @@ const FormBoard = (props) => {
           //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
-          await axios.get('http://localhost:1337/stb-dashboard/properties-count',{
+          await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/properties-count',{
             params: {
                 model_name: chartinfo?.data?.model_name,
                 search_type: chartinfo?.data?.search_type,

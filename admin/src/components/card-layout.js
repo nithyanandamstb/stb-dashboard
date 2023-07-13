@@ -4,6 +4,8 @@ import {TextAnim} from "text-animations-react"
 
 const CardLayout = (props) => {
     //console.log("log","Card")
+    const cardinfo = props.cardinfo;
+    const sc = props.soruce_cardinfo;
     const [today, setToday] = useState(1);
     const [lastWeek, setLastWeek] = useState(0);
     const [lastMonth, setLastMonth] = useState(0);
@@ -23,47 +25,49 @@ const CardLayout = (props) => {
           setLastMonth(0);
         }
         //console.log("Today:",today," Week:",lastWeek, " Month:",lastMonth)
-      }, 10000);
+      }, 3000);
       return () => clearInterval(interval);
     }, [today, lastWeek, lastMonth]);
     return(
       <>
-      {props.cardinfo &&
+      {cardinfo &&
         <Grid gap={{
           desktop: 5,
           tablet: 2,
           mobile: 1
         }}>
-          {props.cardinfo.map((item, idx) => item &&
-              <GridItem background="neutral100" padding={1} col={4} s={12}>              
-                <Box className="box_row1" padding={4} style={{"background-color":"blue"}} shadow="filterShadow" >
-                  <Typography variant="beta"  style={{"color":"white"}}>{item?.card_name}</Typography>
-                  <hr />                  
+          {cardinfo.map((item, idx) => item &&
+              <GridItem background="neutral100" padding={1} col={2} s={12}>
+                
+                <Box className="box_row" padding={4} style={{"background-color":sc[sc.findIndex(si => si.formName === item?.card_name)]?.color}} shadow="filterShadow" >
+                  <Typography variant="omega" fontWeight="semiBold"  style={{"color":sc[sc.findIndex(si => si.formName === item?.card_name)]?.fontColor}}>{sc[sc.findIndex(si => si.formName === item?.card_name)]?.cardName}</Typography>
+                  <hr />
+                  <p>{}</p>
                   {today==1 && item?.data[2] &&
-                    <div textColor="neutral0" className="row1" style={{"color":"white"}} >
+                    <div textColor="neutral0" className="box_row_item">
                       <TextAnim name={item?.data[2].dataLabel+": "+item?.data[2].value}
-                      size={2} type="fromtop"
-                      color="white"
-                      count="infinite"
-                      duration={10}/>
+                      size={1} type="flip"
+                      color={sc[sc.findIndex(si => si.formName === item?.card_name)]?.fontColor}
+                      count="2"
+                      duration={2}/>
                     </div>
                   }
                   {lastWeek==1 && item?.data[1] &&
-                    <div textColor="neutral0" className="row1" style={{"color":"white"}} >
+                    <div textColor="neutral0" className="box_row_item">
                       <TextAnim name={item?.data[1].dataLabel+": "+item?.data[1].value}
-                      size={2} type="fromtop"
-                      color="white"
-                      count="infinite"
-                      duration={10}/>
+                      size={1} type="flip"
+                      color={sc[sc.findIndex(si => si.formName === item?.card_name)]?.fontColor}
+                      count="2"
+                      duration={2}/>
                     </div>
                   }
                   {lastMonth==1 && item?.data[0] &&
-                    <div textColor="neutral0" className="row1" style={{"color":"white"}} >
-                        <TextAnim name={item?.data[3].dataLabel+": "+item?.data[3].value}
-                        size={2} type="fromtop"
-                        color="white"
-                        count="infinite"
-                        duration={10}/>
+                    <div textColor="neutral0" className="box_row_item">
+                        <TextAnim name={item?.data[0].dataLabel+": "+item?.data[0].value}
+                        size={1} type="flip"
+                        color={sc[sc.findIndex(si => si.formName === item?.card_name)]?.fontColor}
+                        count="2"
+                        duration={2}/>
                     </div>
                   }
                   </Box>

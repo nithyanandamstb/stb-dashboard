@@ -15,11 +15,10 @@ const CardBoard = (props) => {
   }
   //console.log("log",form_name)
 
-  const getCardValues = async (form_name) => {
-    console.log("log",form_name)
+  const getCardValues = async (form_name) => {    
     if(isLoading===false) setIsLoading(true);
     const axios = require('axios');
-    await axios.get('http://localhost:1337/stb-dashboard/get-card-values',{
+    await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/get-card-values',{
       params: { form_name: form_name.join(","),  model_name: "plugin::stb-forms.stb-form"}
     }).then(response => {
       setCardData(response.data);
@@ -36,7 +35,7 @@ const CardBoard = (props) => {
   return (
     <>
     {cardData &&
-      <CardLayout cardinfo={cardData} />
+      <CardLayout cardinfo={cardData} soruce_cardinfo={props.cardinfo} />
     }
     </>
   )

@@ -14,7 +14,7 @@ const FormBoard = (props) => {
           //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
-          await axios.get('http://localhost:1337/stb-dashboard/form-entry-count',{
+          await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/form-entry-count',{
             params: {
               model_name: chartinfo?.data?.model_name,
               form_name: chartinfo?.data?.formName,
