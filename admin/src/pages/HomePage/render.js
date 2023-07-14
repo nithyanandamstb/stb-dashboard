@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid,GridItem,Typography } from '@strapi/design-system';
-import RenderFormsChart from "../../components/render-forms-chart";
-import RenderPropertiesChart from "../../components/render-properties-chart";
+import GeneralChart from "../../components/render-general-chart";
+import PieChart from "../../components/render-pie-chart";
+import ComboChart from "../../components/render-combo-chart";
 import RenderCards from "../../components/render-cards";
 
 const DashBoard = (props) => {
@@ -33,16 +34,25 @@ const DashBoard = (props) => {
                 mobile: 1
             }}>
                 
-                {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Chart" && item?.Options &&
+            {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Chart" && item?.Options &&
+                <>
+                {item?.Options?.data?.type=="properties" && item?.Options?.data?.chartType=="PieChart" &&
                     <GridItem background="neutral100" padding={1} col={6} s={12}>
-                    {item?.Options?.data?.type=="properties" &&
-                      <RenderPropertiesChart chartinfo={item?.Options} date_option={props.date_option}/>
-                    }
-                    {item?.Options?.data?.type=="stb_forms" &&
-                      <RenderFormsChart chartinfo={item?.Options} date_option={props.date_option}/>
-                    }
+                        <PieChart chartinfo={item?.Options} date_option={props.date_option}/>
                     </GridItem>
-                )}
+                }
+                {item?.Options?.data?.type=="properties" && item?.Options?.data?.chartType=="ComboChart" &&
+                    <GridItem background="neutral100" padding={1} col={12} s={12}>
+                        <ComboChart chartinfo={item?.Options} date_option={props.date_option}/>
+                    </GridItem>
+                }
+                {item?.Options?.data?.type=="stb_forms" &&
+                    <GridItem background="neutral100" padding={1} col={4} s={12}>
+                        <GeneralChart chartinfo={item?.Options} date_option={props.date_option}/>
+                    </GridItem>
+                }
+                </>
+            )}
             </Grid>
             </>
             :

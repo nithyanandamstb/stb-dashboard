@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Grid,GridItem,Typography } from '@strapi/design-system';
 import { Chart } from "react-google-charts";
+// import PropTypes from 'prop-types';
 import pluginId from '../pluginId';
-const FormBoard = (props) => {
-    //console.log("log",props)
+const GeneralChart = (props) => {
     if(props && props?.chartinfo) {
         const chartinfo = props?.chartinfo;
         const options = chartinfo?.options;
@@ -13,16 +14,13 @@ const FormBoard = (props) => {
           //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
-          await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/properties-count',{
+          await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/form-entry-count',{
             params: {
-                model_name: chartinfo?.data?.model_name,
-                search_type: chartinfo?.data?.search_type,
-                department: chartinfo?.data?.department,
-                status: chartinfo?.data?.status,
-                date_option: dataVal
+              model_name: chartinfo?.data?.model_name,
+              form_name: chartinfo?.data?.formName,
+              date_option: dataVal
             },
           }).then(response => {
-                  //console.log("log data", response.data);
                   setChartData(response.data);
                   setIsLoading(false);
           }).catch(error => {
@@ -30,19 +28,21 @@ const FormBoard = (props) => {
           }); // This is just a sample script. Paste your real code (javascript or HTML) here.
         }
         var renderData = [];
-        renderData.push(["Status","Count"]);
-        //console.log("log",chartData);
+        renderData.push([chartinfo?.options?.hAxis?.title,chartinfo?.options?.vAxis?.title,{ role: "style" }, { role: "annotation"}]);
         if(chartData) {
-            chartData.map((item,i)=>{
-                renderData.push([item?.status,item?.value]);
+          const sortedDatAsc = chartData.sort( (a,b) => b.id - a.id );
+          if(sortedDatAsc) {
+            sortedDatAsc.map((item,i)=>{                
+              renderData.push([item?.date,item?.value,chartinfo?.data?.color,item?.value]);
             });
+          }            
         }
-        //console.log("log renderdata",renderData);
+        //console.log("log renderdata",[renderData]);
         useEffect(async () => {
-            if(dateOption!=props.date_option) {
-                setDateOption(props.date_option);
-                await fetchFormBoard(props.date_option);
-            }   
+          if(dateOption!=props.date_option) {
+            setDateOption(props.date_option);
+            await fetchFormBoard(props.date_option);
+          }          
         }, [props]);
       return (
         <>
@@ -60,4 +60,4 @@ const FormBoard = (props) => {
     }
 };
 
-export default FormBoard;
+export default GeneralChart;

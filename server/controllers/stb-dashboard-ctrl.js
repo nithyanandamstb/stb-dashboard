@@ -34,7 +34,7 @@ module.exports = ({ strapi }) => ({
                         wQry = {"created_at": { $between: [date?.start_date,date?.end_date]},"form_name":form_name},
                         {
                             "id":idx,
-                            "status": dateLabel,
+                            "date": dateLabel,
                             "value": await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, wQry)
                         }
                     )));
@@ -52,7 +52,7 @@ module.exports = ({ strapi }) => ({
         }        
     },
     // GET PROPERTIES COUNT FOR CHART
-    async properties_count(ctx) {
+    async pie_properties_count(ctx) {
         var dashBoard = {};
         
         try {            
@@ -80,6 +80,56 @@ module.exports = ({ strapi }) => ({
                     })));
                     dashBoard = propEntries;
                 }
+            }            
+            return await new Promise(resolve => {
+                setTimeout(() => {
+                  resolve(dashBoard)
+                }, 2000)
+            });
+        } catch (error) {
+            ctx.throw(500, error);
+        }        
+    },
+    async combo_properties_count(ctx) {
+        var dashBoard  = [];
+        try {            
+            if(ctx?.query?.model_name && ctx?.query?.date_option) {
+                let searchType = ctx?.query?.search_type;
+                let department = ctx?.query?.department;
+                let dateOption = ctx?.query?.date_option;
+                let statusVal = ctx?.query?.status.split(",");
+                let modelName = ctx?.query?.model_name;
+                let dates = getBetweenDays(dateOption);
+                let wQry = {"publish":1};
+                let labelData = [];
+                if(searchType!="" && searchType!=undefined) {
+                    wQry['search_type'] = searchType;
+                }
+                if(department!="" && department!=undefined) {
+                    wQry['department'] = department;
+                }
+                //console.log(statusVal)
+                let dateLabel = [];
+                let dataValue = {};
+                dateLabel.push("Month");
+                if(dates) {
+                    let frmEntryCount = await Promise.all(dates.map(async (date,idx) => (
+                        dataValue = [convertYearMonth(dateOption, date?.start_date)],
+                        await Promise.all(statusVal.map(async (status, idx2) => (                            
+                            dateLabel.push(status),
+                            wQry ["updated_at"] = { $between: [date?.start_date,date?.end_date]},
+                            dataValue.push(await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status})),
+                            {}
+                        ),dashBoard.splice(1,0,dataValue))),
+                        {}
+                    )));
+                }
+                
+                var dL = [...new Set(dateLabel)];
+                //dashBoard.push(["data_label"]=dL);
+                dashBoard.splice(0,0,dL)
+                
+
             }            
             return await new Promise(resolve => {
                 setTimeout(() => {

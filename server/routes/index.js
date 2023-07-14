@@ -19,8 +19,17 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/properties-count',
-    handler: 'stbDashboardCtrl.properties_count',
+    path: '/pie-properties-count',
+    handler: 'stbDashboardCtrl.pie_properties_count',
+    config: {
+      policies: [],
+      auth: false
+    },
+  },
+  {
+    method: 'GET',
+    path: '/combo-properties-count',
+    handler: 'stbDashboardCtrl.combo_properties_count',
     config: {
       policies: [],
       auth: false

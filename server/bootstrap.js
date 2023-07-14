@@ -26,7 +26,7 @@ module.exports = async ({ strapi }) => {
     
     let chartentry = await Promise.all(SampleJson.map(async (item,idx) => item && (      
       await Promise.all(item?.chart.map(async (sitem, idx2) => (
-        //console.log(sitem?.data),
+        //console.log(sitem?.data),/
         await strapi.plugin('stb-dashboard').service('stbDashboardService').create(
           {
             "data": {
