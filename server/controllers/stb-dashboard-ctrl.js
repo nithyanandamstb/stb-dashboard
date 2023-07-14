@@ -64,6 +64,7 @@ module.exports = ({ strapi }) => ({
                 let modelName = ctx?.query?.model_name;
                 let date = getFromAndTodDate(dateOption);
                 let wQry = {"publish":1};
+                var valueS = "";
                 //console.log(statusVal)
                 if(date && statusVal) {
                     wQry ["updated_at"] = { $between: [date?.start_date,date?.end_date]};
@@ -73,10 +74,12 @@ module.exports = ({ strapi }) => ({
                     if(department!="" && department!=undefined) {
                         wQry['department'] = department;
                     }
-                    let propEntries = await Promise.all(statusVal.map(async (status,idx) => ({
+                    let propEntries = await Promise.all(statusVal.map(async (status,idx) => (
+                        valueS = await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status}),
+                        {
                         "id":idx,
-                        "status": status,
-                        "value": await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status})
+                        "status": status+" : "+valueS,
+                        "value": valueS
                     })));
                     dashBoard = propEntries;
                 }
