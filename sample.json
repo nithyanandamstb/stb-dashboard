@@ -1,5 +1,7 @@
-[{
-  "card": [{
+[
+    {
+      "card": [
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -7,8 +9,8 @@
           "formName": "Book a Valuation",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      },
-      {
+        },
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -16,8 +18,8 @@
           "formName": "Valuation",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      },
-      {
+        },
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -25,8 +27,8 @@
           "formName": "General Enquiry",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      },
-      {
+        },
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -34,8 +36,8 @@
           "formName": "Instant Buyer Finder",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      },
-      {
+        },
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -43,8 +45,8 @@
           "formName": "Careers",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      },
-      {
+        },
+        {
           "type": "stb_forms",
           "color": "#4945ff",
           "enabled": true,
@@ -52,340 +54,355 @@
           "formName": "Contact/General Enquiry",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
-      }
-  ],
-  "chart": [{
+        }
+      ],
+      "chart": [
+        {
           "data": {
-              "type": "properties",
-              "status": "For Sale,Sold,Sale Agreed",
-              "chartType": "ComboChart",
-              "department": "residential",
-              "model_name": "api::property.property",
-              "search_type": "sales"
+            "type": "properties",
+            "status": "Sale Agreed,For Sale,Sold",
+            "chartType": "PieChart",
+            "department": "residential",
+            "model_name": "api::property.property",
+            "search_type": "sales",
+            "column": 3
           },
           "options": {
-              "hAxis": {
-                  "title": "Month",
-                  "direction": -1,
-                  "textStyle": {
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "slantedText": true,
-                  "titleTextStyle": {
-                      "italic": "false",
-                      "direction": "-1",
-                      "slantedText": "true",
-                      "slantedTextAngle": "45"
-                  },
-                  "slantedTextAngle": 45
-              },
-              "title": "For Sale Combo chart by Status",
-              "vAxis": {
-                  "title": "Status",
-                  "textStyle": {
-                      "bold": "true",
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "titleTextStyle": {
-                      "italic": "false"
-                  }
-              },
-              "legend": {
-                  "position": "top"
-              },
-              "series": {
-                  "0": {
-                      "color": "#DC3912"
-                  },
-                  "1": {
-                      "color": "#FF9900"
-                  },
-                  "2": {
-                      "color": "#3366CC"
-                  }
-              },
-              "subtitle": "Month Wise",
-              "chartArea": {
-                  "width": "80%"
-              },
-              "seriesType": "bars",
-              "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
-              }
+            "colors": [
+              "#3366CC",
+              "#DC3912",
+              "#FF9900",
+              "#990099"
+            ],
+            "is3D": true,
+            "title": "For Sale",
+            "chartArea": {
+              "width": "80%"
+            },
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            },
+            "legend": {
+              "position": "bottom"
+            }
           }
-      },
-      {
+        },
+        {
           "data": {
-              "type": "properties",
-              "status": "Let,To Let,Valuation",
-              "chartType": "ComboChart",
-              "department": "residential",
-              "model_name": "api::property.property",
-              "search_type": "lettings"
+            "type": "properties",
+            "status": "For Sale,Sold,Sale Agreed",
+            "chartType": "ComboChart",
+            "department": "residential",
+            "model_name": "api::property.property",
+            "search_type": "sales",
+            "column": 9
           },
           "options": {
-              "hAxis": {
-                  "title": "Month",
-                  "direction": -1,
-                  "textStyle": {
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "slantedText": true,
-                  "titleTextStyle": {
-                      "italic": "false",
-                      "direction": "-1",
-                      "slantedText": "true",
-                      "slantedTextAngle": "45"
-                  },
-                  "slantedTextAngle": 45
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
               },
-              "title": "To Let Combo chart by Status",
-              "vAxis": {
-                  "title": "Status",
-                  "textStyle": {
-                      "bold": "true",
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "titleTextStyle": {
-                      "italic": "false"
-                  }
-              },
-              "legend": {
-                  "position": "top"
-              },
-              "series": {
-                  "0": {
-                      "color": "#DC3912"
-                  },
-                  "1": {
-                      "color": "#FF9900"
-                  },
-                  "2": {
-                      "color": "#3366CC"
-                  }
-              },
-              "subtitle": "Month Wise",
-              "chartArea": {
-                  "width": "80%"
-              },
-              "seriesType": "bars",
+              "slantedText": true,
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
-              }
-          }
-      },
-      {
-          "data": {
-              "type": "properties",
-              "status": "Sale Agreed,For Sale,Sold",
-              "chartType": "PieChart",
-              "department": "residential",
-              "model_name": "api::property.property",
-              "search_type": "sales"
-          },
-          "options": {
-              "colors": [
-                  "#3366CC",
-                  "#DC3912",
-                  "#FF9900",
-                  "#990099"
-              ],
-              "is3D": true,
-              "title": "For Sale",
-              "chartArea": {
-                  "width": "80%"
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "For Sale Combo chart by Status",
+            "vAxis": {
+              "title": "Status",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
               },
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
+                "italic": "false"
               }
+            },
+            "legend": {
+              "position": "bottom"
+            },
+            "series": {
+              "0": {
+                "color": "#DC3912"
+              },
+              "1": {
+                "color": "#FF9900"
+              },
+              "2": {
+                "color": "#3366CC"
+              }
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "seriesType": "bars",
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
           }
-      },
-      {
+        },
+        {
           "data": {
-              "type": "properties",
-              "status": "Let,To Let,Valuation",
-              "chartType": "PieChart",
-              "department": "residential",
-              "model_name": "api::property.property",
-              "search_type": "lettings"
+            "type": "properties",
+            "status": "Let,To Let,Valuation",
+            "chartType": "ComboChart",
+            "department": "residential",
+            "model_name": "api::property.property",
+            "search_type": "lettings",
+            "column": 9
           },
           "options": {
-              "colors": [
-                  "#3366CC",
-                  "#DC3912",
-                  "#FF9900",
-                  "#990099"
-              ],
-              "is3D": true,
-              "title": "To Let",
-              "chartArea": {
-                  "width": "80%"
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "To Let Combo chart by Status",
+            "vAxis": {
+              "title": "Status",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
               },
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
+                "italic": "false"
               }
+            },
+            "legend": {
+              "position": "bottom"
+            },
+            "series": {
+              "0": {
+                "color": "#DC3912"
+              },
+              "1": {
+                "color": "#FF9900"
+              },
+              "2": {
+                "color": "#3366CC"
+              }
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "seriesType": "bars",
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
           }
-      },
-      {
+        },
+        {
           "data": {
-              "type": "stb_forms",
-              "color": "#4945ff",
-              "formName": "Arrange a Viewing",
-              "chartType": "ColumnChart",
-              "model_name": "plugin::stb-forms.stb-form"
+            "type": "properties",
+            "status": "Let,To Let,Valuation",
+            "chartType": "PieChart",
+            "department": "residential",
+            "model_name": "api::property.property",
+            "search_type": "lettings",
+            "column": 3
           },
           "options": {
-              "is3D": true,
-              "hAxis": {
-                  "title": "Month",
-                  "direction": -1,
-                  "textStyle": {
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "slantedText": true,
-                  "titleTextStyle": {
-                      "italic": "false",
-                      "direction": "-1",
-                      "slantedText": "true",
-                      "slantedTextAngle": "45"
-                  },
-                  "slantedTextAngle": 45
+            "colors": [
+              "#3366CC",
+              "#DC3912",
+              "#FF9900",
+              "#990099"
+            ],
+            "is3D": true,
+            "legend": {
+              "position": "bottom"
+            },
+            "title": "To Let",
+            "chartArea": {
+              "width": "80%"
+            },
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
+          }
+        },
+        {
+          "data": {
+            "type": "stb_forms",
+            "color": "#4945ff",
+            "formName": "Arrange a Viewing",
+            "chartType": "ColumnChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
+          },
+          "options": {
+            "is3D": true,
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
               },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "Book A Viewing",
+            "vAxis": {
               "title": "Book A Viewing",
-              "vAxis": {
-                  "title": "Book A Viewing",
-                  "textStyle": {
-                      "bold": "true",
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "titleTextStyle": {
-                      "italic": "false"
-                  }
-              },
-              "legend": {
-                  "position": "none"
-              },
-              "subtitle": "Month Wise",
-              "chartArea": {
-                  "width": "80%"
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
               },
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
+                "italic": "false"
               }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
           }
-      },
-      {
+        },
+        {
           "data": {
-              "type": "stb_forms",
-              "color": "#ff457c",
-              "formName": "General Enquiry",
-              "chartType": "LineChart",
-              "model_name": "plugin::stb-forms.stb-form"
+            "type": "stb_forms",
+            "color": "#ff457c",
+            "formName": "General Enquiry",
+            "chartType": "LineChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
           },
           "options": {
-              "hAxis": {
-                  "title": "Month",
-                  "direction": -1,
-                  "textStyle": {
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "slantedText": true,
-                  "titleTextStyle": {
-                      "italic": "false",
-                      "direction": "-1",
-                      "slantedText": "true",
-                      "slantedTextAngle": "45"
-                  },
-                  "slantedTextAngle": 45
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
               },
-              "title": "General Enquiry",
-              "vAxis": {
-                  "title": "No of Enquiry",
-                  "textStyle": {
-                      "bold": "true",
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "titleTextStyle": {
-                      "italic": "false"
-                  }
-              },
-              "legend": {
-                  "position": "none"
-              },
-              "subtitle": "Month Wise",
-              "chartArea": {
-                  "width": "80%"
-              },
-              "pointsVisible": true,
+              "slantedText": true,
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "General Enquiry",
+            "vAxis": {
+              "title": "No of Enquiry",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "titleTextStyle": {
+                "italic": "false"
               }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "pointsVisible": true,
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
           }
-      },
-      {
+        },
+        {
           "data": {
-              "type": "stb_forms",
-              "color": "#45ff4e",
-              "formName": "Valuation",
-              "chartType": "AreaChart",
-              "model_name": "plugin::stb-forms.stb-form"
+            "type": "stb_forms",
+            "color": "#45ff4e",
+            "formName": "Valuation",
+            "chartType": "AreaChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
           },
           "options": {
-              "hAxis": {
-                  "title": "Month",
-                  "direction": -1,
-                  "textStyle": {
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "slantedText": true,
-                  "titleTextStyle": {
-                      "italic": "false",
-                      "direction": "-1",
-                      "slantedText": "true",
-                      "slantedTextAngle": "45"
-                  },
-                  "slantedTextAngle": 45
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
               },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "Valuation",
+            "vAxis": {
               "title": "Valuation",
-              "vAxis": {
-                  "title": "Valuation",
-                  "textStyle": {
-                      "bold": "true",
-                      "color": "#000",
-                      "fontSize": "12"
-                  },
-                  "titleTextStyle": {
-                      "italic": "false"
-                  }
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
               },
-              "legend": {
-                  "position": "none"
-              },
-              "subtitle": "Month Wise",
-              "chartArea": {
-                  "width": "80%"
-              },
-              "pointsVisible": true,
               "titleTextStyle": {
-                  "color": "#000",
-                  "fontSize": "20"
+                "italic": "false"
               }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "pointsVisible": true,
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
           }
-      }
+        }
+      ]
+    }
   ]
-}]

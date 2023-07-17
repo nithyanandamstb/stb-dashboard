@@ -37,17 +37,17 @@ const DashBoard = (props) => {
             {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Chart" && item?.Options &&
                 <>
                 {item?.Options?.data?.type=="properties" && item?.Options?.data?.chartType=="PieChart" &&
-                    <GridItem background="neutral100" padding={1} col={6} s={12}>
+                    <GridItem background="neutral100" padding={1} col={item?.Options?.data?.column ? item?.Options?.data?.column:6} s={12}>
                         <PieChart chartinfo={item?.Options} date_option={props.date_option}/>
                     </GridItem>
                 }
                 {item?.Options?.data?.type=="properties" && item?.Options?.data?.chartType=="ComboChart" &&
-                    <GridItem background="neutral100" padding={1} col={12} s={12}>
+                    <GridItem background="neutral100" padding={1} col={item?.Options?.data?.column ? item?.Options?.data?.column:6} s={12}>
                         <ComboChart chartinfo={item?.Options} date_option={props.date_option}/>
                     </GridItem>
                 }
                 {item?.Options?.data?.type=="stb_forms" &&
-                    <GridItem background="neutral100" padding={1} col={4} s={12}>
+                    <GridItem background="neutral100" padding={1} col={item?.Options?.data?.column ? item?.Options?.data?.column:6} s={12}>
                         <GeneralChart chartinfo={item?.Options} date_option={props.date_option}/>
                     </GridItem>
                 }
