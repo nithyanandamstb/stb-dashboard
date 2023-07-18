@@ -28,6 +28,10 @@ const CardLayout = (props) => {
       }, 3000);
       return () => clearInterval(interval);
     }, [today, lastWeek, lastMonth]);
+    var defaultCol = 6;
+    if(cardinfo && cardinfo.length>2) {
+      defaultCol = Math.floor(12/parseInt(cardinfo.length));
+    }    
     return(
       <>
       {cardinfo &&
@@ -37,7 +41,7 @@ const CardLayout = (props) => {
           mobile: 1
         }}>
           {cardinfo.map((item, idx) => item &&
-              <GridItem background="neutral100" padding={1} col={2} s={12}>
+              <GridItem background="neutral100" padding={1} col={defaultCol} s={12}>
                 
                 <Box className="box_row" padding={4} style={{"background-color":sc[sc.findIndex(si => si.formName === item?.card_name)]?.color}} shadow="filterShadow" >
                   <Typography variant="omega" fontWeight="semiBold"  style={{"color":sc[sc.findIndex(si => si.formName === item?.card_name)]?.fontColor}}>{sc[sc.findIndex(si => si.formName === item?.card_name)]?.cardName}</Typography>
