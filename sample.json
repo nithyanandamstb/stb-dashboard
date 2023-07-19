@@ -4,7 +4,7 @@
         {
           "type": "properties",
           "color": "#4945ff",
-          "limit": 5,
+          "limit": 10,
           "column": 12,
           "fields": "crm_id,display_address,status",
           "enabled": true,
@@ -47,7 +47,7 @@
         {
           "type": "stb_forms",
           "color": "#4945ff",
-          "enabled": true,
+          "enabled": false,
           "cardName": "Instant Buyer Finder",
           "formName": "Instant Buyer Finder",
           "fontColor": "#ffffff",
@@ -56,7 +56,7 @@
         {
           "type": "stb_forms",
           "color": "#4945ff",
-          "enabled": true,
+          "enabled": false,
           "cardName": "Careers",
           "formName": "Careers",
           "fontColor": "#ffffff",
@@ -65,7 +65,7 @@
         {
           "type": "stb_forms",
           "color": "#4945ff",
-          "enabled": true,
+          "enabled": false,
           "cardName": "Contact",
           "formName": "Contact/General Enquiry",
           "fontColor": "#ffffff",
@@ -73,7 +73,162 @@
         }
       ],
       "chart": [
-        
+        {
+          "data": {
+            "type": "stb_forms",
+            "color": "#4945ff",
+            "formName": "Arrange a Viewing",
+            "chartType": "ColumnChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
+          },
+          "options": {
+            "is3D": true,
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "Book A Viewing",
+            "vAxis": {
+              "title": "Book A Viewing",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "titleTextStyle": {
+                "italic": "false"
+              }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
+          }
+        },
+        {
+          "data": {
+            "type": "stb_forms",
+            "color": "#ff457c",
+            "formName": "General Enquiry",
+            "chartType": "LineChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
+          },
+          "options": {
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "General Enquiry",
+            "vAxis": {
+              "title": "No of Enquiry",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "titleTextStyle": {
+                "italic": "false"
+              }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "pointsVisible": true,
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
+          }
+        },
+        {
+          "data": {
+            "type": "stb_forms",
+            "color": "#45ff4e",
+            "formName": "Valuation",
+            "chartType": "AreaChart",
+            "model_name": "plugin::stb-forms.stb-form",
+            "column": 4
+          },
+          "options": {
+            "hAxis": {
+              "title": "Month",
+              "direction": -1,
+              "textStyle": {
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "slantedText": true,
+              "titleTextStyle": {
+                "italic": "false",
+                "direction": "-1",
+                "slantedText": "true",
+                "slantedTextAngle": "45"
+              },
+              "slantedTextAngle": 45
+            },
+            "title": "Valuation",
+            "vAxis": {
+              "title": "Valuation",
+              "textStyle": {
+                "bold": "true",
+                "color": "#000",
+                "fontSize": "12"
+              },
+              "titleTextStyle": {
+                "italic": "false"
+              }
+            },
+            "legend": {
+              "position": "none"
+            },
+            "subtitle": "Month Wise",
+            "chartArea": {
+              "width": "80%"
+            },
+            "pointsVisible": true,
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            }
+          }
+        },
         {
           "data": {
             "type": "properties",
@@ -258,162 +413,6 @@
             "chartArea": {
               "width": "80%"
             },
-            "titleTextStyle": {
-              "color": "#000",
-              "fontSize": "20"
-            }
-          }
-        },
-        {
-          "data": {
-            "type": "stb_forms",
-            "color": "#4945ff",
-            "formName": "Arrange a Viewing",
-            "chartType": "ColumnChart",
-            "model_name": "plugin::stb-forms.stb-form",
-            "column": 4
-          },
-          "options": {
-            "is3D": true,
-            "hAxis": {
-              "title": "Month",
-              "direction": -1,
-              "textStyle": {
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "slantedText": true,
-              "titleTextStyle": {
-                "italic": "false",
-                "direction": "-1",
-                "slantedText": "true",
-                "slantedTextAngle": "45"
-              },
-              "slantedTextAngle": 45
-            },
-            "title": "Book A Viewing",
-            "vAxis": {
-              "title": "Book A Viewing",
-              "textStyle": {
-                "bold": "true",
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "titleTextStyle": {
-                "italic": "false"
-              }
-            },
-            "legend": {
-              "position": "none"
-            },
-            "subtitle": "Month Wise",
-            "chartArea": {
-              "width": "80%"
-            },
-            "titleTextStyle": {
-              "color": "#000",
-              "fontSize": "20"
-            }
-          }
-        },
-        {
-          "data": {
-            "type": "stb_forms",
-            "color": "#ff457c",
-            "formName": "General Enquiry",
-            "chartType": "LineChart",
-            "model_name": "plugin::stb-forms.stb-form",
-            "column": 4
-          },
-          "options": {
-            "hAxis": {
-              "title": "Month",
-              "direction": -1,
-              "textStyle": {
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "slantedText": true,
-              "titleTextStyle": {
-                "italic": "false",
-                "direction": "-1",
-                "slantedText": "true",
-                "slantedTextAngle": "45"
-              },
-              "slantedTextAngle": 45
-            },
-            "title": "General Enquiry",
-            "vAxis": {
-              "title": "No of Enquiry",
-              "textStyle": {
-                "bold": "true",
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "titleTextStyle": {
-                "italic": "false"
-              }
-            },
-            "legend": {
-              "position": "none"
-            },
-            "subtitle": "Month Wise",
-            "chartArea": {
-              "width": "80%"
-            },
-            "pointsVisible": true,
-            "titleTextStyle": {
-              "color": "#000",
-              "fontSize": "20"
-            }
-          }
-        },
-        {
-          "data": {
-            "type": "stb_forms",
-            "color": "#45ff4e",
-            "formName": "Valuation",
-            "chartType": "AreaChart",
-            "model_name": "plugin::stb-forms.stb-form",
-            "column": 4
-          },
-          "options": {
-            "hAxis": {
-              "title": "Month",
-              "direction": -1,
-              "textStyle": {
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "slantedText": true,
-              "titleTextStyle": {
-                "italic": "false",
-                "direction": "-1",
-                "slantedText": "true",
-                "slantedTextAngle": "45"
-              },
-              "slantedTextAngle": 45
-            },
-            "title": "Valuation",
-            "vAxis": {
-              "title": "Valuation",
-              "textStyle": {
-                "bold": "true",
-                "color": "#000",
-                "fontSize": "12"
-              },
-              "titleTextStyle": {
-                "italic": "false"
-              }
-            },
-            "legend": {
-              "position": "none"
-            },
-            "subtitle": "Month Wise",
-            "chartArea": {
-              "width": "80%"
-            },
-            "pointsVisible": true,
             "titleTextStyle": {
               "color": "#000",
               "fontSize": "20"

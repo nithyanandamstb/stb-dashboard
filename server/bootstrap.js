@@ -4,7 +4,7 @@ const SampleJson = require("../sample.json");
 const createStbBoardCreate = (inputData) => {
 }
 module.exports = async ({ strapi }) => {
-  //console.log("hai...")
+  //console.log("hai..")
   // bootstrap phase  
   let checkStbDashBoardContentType = await strapi.db.query("plugin::stb-dashboard.stb-dashboard").count({
     where: {}
