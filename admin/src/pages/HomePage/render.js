@@ -8,7 +8,7 @@ import RenderTables from "../../components/render-tables";
 import ChartsHeader from "../../components/chart-header"
 
 const DashBoard = (props) => {
-    const [dateOption,setDateOption] = useState(1);
+    const [dateOption,setDateOption] = useState(5);
     const [isLoading, setIsLoading] = useState(true);
     const [chartConfigJson, setChartConfigJson] = useState([]);
     const getCharsAndCards = async () => {

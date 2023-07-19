@@ -7,11 +7,11 @@ export default function App(props) {
       <BaseHeaderLayout primaryAction={
         <Select
         optionData={[
-          { value: "1", text: "Last 12 Months" },
-          { value: "2", text: "Last 6 Months" },
-          { value: "3", text: "Last 3 Months" },
+          { value: "5", text: "Last 7 days" },
           { value: "4", text: "Last 30 days" },
-          { value: "5", text: "Last 7 days" }
+          { value: "3", text: "Last 3 Months" },
+          { value: "2", text: "Last 6 Months" },
+          { value: "1", text: "Last 12 Months" }
         ]}
         onChange={(data) => {
           //console.log("log",data);  
