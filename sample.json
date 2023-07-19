@@ -273,13 +273,13 @@
             },
             "series": {
               "0": {
-                "color": "#DC3912"
+                "color": "#3366CC"
               },
               "1": {
                 "color": "#FF9900"
               },
               "2": {
-                "color": "#3366CC"
+                "color": "#DC3912"
               }
             },
             "subtitle": "Month Wise",
@@ -306,7 +306,6 @@
           "options": {
             "colors": [
               "#3366CC",
-              "#DC3912",
               "#FF9900",
               "#990099"
             ],
@@ -327,7 +326,7 @@
         {
           "data": {
             "type": "properties",
-            "status": "Let,To Let,Valuation",
+            "status": "Let,To Let",
             "chartType": "ComboChart",
             "department": "residential",
             "model_name": "api::property.property",
@@ -368,13 +367,13 @@
             },
             "series": {
               "0": {
-                "color": "#FF9900"
+                "color": "#5500FF"
               },
               "1": {
-                "color": "#3366CC"
+                "color": "#12B7B9"
               },
               "2": {
-                "color": "#3366CC"
+                "color": "#00DCFF"
               }
             },
             "subtitle": "Month Wise",
@@ -391,7 +390,7 @@
         {
           "data": {
             "type": "properties",
-            "status": "Let,To Let,Valuation",
+            "status": "Let,To Let",
             "chartType": "PieChart",
             "department": "residential",
             "model_name": "api::property.property",
@@ -400,9 +399,9 @@
           },
           "options": {
             "colors": [
-              "#FF9900",
-              "#DC3912",
-              "#3366CC",
+              "#5500FF",
+              "#12B7B9",
+              "#00DCFF",
               "#990099"
             ],
             "is3D": true,
