@@ -43,6 +43,15 @@ module.exports = [
       policies: [],
       auth: false
     },
-  }, 
+  },
+  {
+    method: 'GET',
+    path: '/get_latest_activite_properties',
+    handler: 'stbDashboardCtrl.get_latest_activite_properties',
+    config: {
+      policies: [],
+      auth: false
+    },
+  },
   
 ];

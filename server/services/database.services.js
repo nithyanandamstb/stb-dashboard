@@ -15,11 +15,8 @@ module.exports = ({ strapi }) => ({
             where: cond
         });
     },
-    async selectAll() {
-        return await strapi.db.query("plugin::stb-dashboard.stb-dashboard").findMany({
-            where: {"enabled":true},
-            orderBy: {Order_No: "ASC"}
-        });
+    async selectAll(modelName, cond = {}) {
+        return await strapi.db.query(modelName).findMany(cond);
     }
 });
 

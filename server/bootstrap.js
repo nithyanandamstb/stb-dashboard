@@ -4,6 +4,7 @@ const SampleJson = require("../sample.json");
 const createStbBoardCreate = (inputData) => {
 }
 module.exports = async ({ strapi }) => {
+  //console.log("hai...")
   // bootstrap phase  
   let checkStbDashBoardContentType = await strapi.db.query("plugin::stb-dashboard.stb-dashboard").count({
     where: {}
@@ -32,6 +33,23 @@ module.exports = async ({ strapi }) => {
             "data": {
                 "Name":sitem?.options?.title,
                 "Board_Type":"Chart",
+                "Enabled":true,
+                "Order_No":order_no++,
+                "Options":sitem
+            }
+          }
+        )
+      )))      
+    )));
+
+    let tableentry = await Promise.all(SampleJson.map(async (item,idx) => item && (      
+      await Promise.all(item?.tables.map(async (sitem, idx2) => (
+        //console.log(sitem?.tableName),
+        await strapi.plugin('stb-dashboard').service('stbDashboardService').create(
+          {
+            "data": {
+                "Name":sitem?.tableName,
+                "Board_Type":"Table",
                 "Enabled":true,
                 "Order_No":order_no++,
                 "Options":sitem

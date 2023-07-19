@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Grid,GridItem,Typography } from '@strapi/design-system';
+import { Grid,GridItem,Typography,Box } from '@strapi/design-system';
 import GeneralChart from "../../components/render-general-chart";
 import PieChart from "../../components/render-pie-chart";
 import ComboChart from "../../components/render-combo-chart";
 import RenderCards from "../../components/render-cards";
+import RenderTables from "../../components/render-tables";
 import ChartsHeader from "../../components/chart-header"
 
 const DashBoard = (props) => {
@@ -29,14 +30,14 @@ const DashBoard = (props) => {
             <>
             {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Card" && item?.Options &&
                 <RenderCards cardinfo={item?.Options} date_option={props.date_option}/>
-            )}
+            )}     
             <ChartsHeader onSelectDate={setDateOption} />
             <Grid gap={{
                 desktop: 5,
                 tablet: 2,
                 mobile: 1
             }}>
-                
+                           
             {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Chart" && item?.Options &&
                 <>
                 {item?.Options?.data?.type=="properties" && item?.Options?.data?.chartType=="PieChart" &&
@@ -56,7 +57,15 @@ const DashBoard = (props) => {
                 }
                 </>
             )}
+            {chartConfigJson.map((item, idx) => item && item?.Enabled==true && item?.Board_Type=="Table" && item?.Options &&
+                <GridItem background="neutral100" padding={1} col={item?.Options?.column ? item?.Options?.column:6} s={12}>
+                    <RenderTables tableinfo={item?.Options} date_option={props.date_option}/>        
+                </GridItem>
+            )}
             </Grid>
+            <Box padding={4} background="" shadow="filterShadow">
+            <Typography textColor="neutral0"></Typography>
+            </Box>
             </>
             :
             <>Chart Content type data is empty</>

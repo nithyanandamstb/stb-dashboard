@@ -1,10 +1,11 @@
 import React, { useState, useEffect,useCallback } from 'react';
-import { BaseHeaderLayout, Box, ContentLayout } from '@strapi/design-system';
+import { BaseHeaderLayout, Box, ContentLayout, Link } from '@strapi/design-system';
 import CustomCss from '../../src/custom.css'
 export default function App(props) {
   //console.log("log",props);
-  const [dateOption,setDateOption] = useState(1);
   return (    
-      <BaseHeaderLayout primaryAction={""} title="Dashboard" subtitle="--" as="h4" />
+      <BaseHeaderLayout primaryAction={<Link href={process.env.STRAPI_ADMIN_STBDASHBOARD_SITEURL} isExternal>
+      View Site
+    </Link>} title="Dashboard" subtitle="--" as="h4" />
   );
 }

@@ -19,7 +19,8 @@
       "type": "enumeration",
       "enum": [
         "Chart",
-        "Card"
+        "Card",
+        "Table"
       ],
       "required": true
     },
@@ -28,11 +29,11 @@
       "default": true,
       "required": true
     },
-    "Options": {
-      "type": "json"
-    },
     "Order_No": {
       "type": "number"
-    }
+    },
+    "Options": {
+      "type": "json"
+    }    
   }
 }

@@ -1,5 +1,21 @@
 [
     {
+      "tables": [
+        {
+          "type": "properties",
+          "color": "#4945ff",
+          "limit": 5,
+          "column": 12,
+          "fields": "crm_id,display_address,status",
+          "enabled": true,
+          "formName": "Latest Activities - Property list",
+          "fontColor": "#ffffff",
+          "tableName": "Latest Activities - Property list",
+          "department": "residential",
+          "model_name": "api::property.property",
+          "search_type": "sales"
+        }
+      ],
       "card": [
         {
           "type": "stb_forms",
@@ -57,37 +73,7 @@
         }
       ],
       "chart": [
-        {
-          "data": {
-            "type": "properties",
-            "status": "Sale Agreed,For Sale,Sold",
-            "chartType": "PieChart",
-            "department": "residential",
-            "model_name": "api::property.property",
-            "search_type": "sales",
-            "column": 3
-          },
-          "options": {
-            "colors": [
-              "#3366CC",
-              "#DC3912",
-              "#FF9900",
-              "#990099"
-            ],
-            "is3D": true,
-            "title": "For Sale",
-            "chartArea": {
-              "width": "80%"
-            },
-            "titleTextStyle": {
-              "color": "#000",
-              "fontSize": "20"
-            },
-            "legend": {
-              "position": "bottom"
-            }
-          }
-        },
+        
         {
           "data": {
             "type": "properties",
@@ -128,7 +114,7 @@
               }
             },
             "legend": {
-              "position": "bottom"
+              "position": "top"
             },
             "series": {
               "0": {
@@ -149,6 +135,37 @@
             "titleTextStyle": {
               "color": "#000",
               "fontSize": "20"
+            }
+          }
+        },
+        {
+          "data": {
+            "type": "properties",
+            "status": "Sale Agreed,For Sale,Sold",
+            "chartType": "PieChart",
+            "department": "residential",
+            "model_name": "api::property.property",
+            "search_type": "sales",
+            "column": 3
+          },
+          "options": {
+            "colors": [
+              "#3366CC",
+              "#DC3912",
+              "#FF9900",
+              "#990099"
+            ],
+            "is3D": true,
+            "title": "For Sale",
+            "chartArea": {
+              "width": "80%"
+            },
+            "titleTextStyle": {
+              "color": "#000",
+              "fontSize": "20"
+            },
+            "legend": {
+              "position": "bottom"
             }
           }
         },
@@ -192,7 +209,7 @@
               }
             },
             "legend": {
-              "position": "bottom"
+              "position": "top"
             },
             "series": {
               "0": {

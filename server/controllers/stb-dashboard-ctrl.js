@@ -12,7 +12,10 @@ module.exports = ({ strapi }) => ({
     // GET CHART DETAILS
     async get_charts(ctx) {
         try {
-            return await strapi.plugin('stb-dashboard').service('dataBaseService').selectAll();
+            return await strapi.plugin('stb-dashboard').service('dataBaseService').selectAll("plugin::stb-dashboard.stb-dashboard",{
+                where: {"enabled":true},
+                orderBy: {Order_No: "ASC"}
+            });
         } catch (error) {
             ctx.throw(500, error);
         }
@@ -183,6 +186,28 @@ module.exports = ({ strapi }) => ({
         } catch (error) {
             ctx.throw(500, error);
         }        
+    },
+    //
+    async get_latest_activite_properties(ctx) {
+        try {
+            let fields = ['id'];
+            if(ctx?.query?.fields) {
+                fields = ctx?.query?.fields.split(",");
+            }
+            let modelName = ctx?.query?.model_name;
+            let searchType = ctx?.query?.search_type;
+            let limit = ctx?.query?.limit ? ctx?.query?.limit:10;
+            if(modelName) {
+                return await strapi.plugin('stb-dashboard').service('dataBaseService').selectAll(modelName,{
+                    select: fields,
+                    where: {},
+                    orderBy: {updatedAt: "DESC"},
+                    limit:limit
+                });
+            }
+        } catch (error) {
+            ctx.throw(500, error);
+        }
     },
     async create(ctx) {
         try {
