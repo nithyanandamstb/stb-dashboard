@@ -22,7 +22,7 @@
           "color": "#4945ff",
           "enabled": true,
           "cardName": "Book A Viewing",
-          "formName": "Book a Valuation",
+          "formName": "Arrange a Viewing",
           "fontColor": "#ffffff",
           "model_name": "plugin::stb-forms.stb-form"
         },
@@ -232,7 +232,7 @@
         {
           "data": {
             "type": "properties",
-            "status": "For Sale,Sold,Sale Agreed",
+            "status": "For Sale,Sold",
             "chartType": "ComboChart",
             "department": "residential",
             "model_name": "api::property.property",
@@ -296,7 +296,7 @@
         {
           "data": {
             "type": "properties",
-            "status": "Sale Agreed,For Sale,Sold",
+            "status": "For Sale,Sold",
             "chartType": "PieChart",
             "department": "residential",
             "model_name": "api::property.property",
@@ -368,10 +368,10 @@
             },
             "series": {
               "0": {
-                "color": "#DC3912"
+                "color": "#FF9900"
               },
               "1": {
-                "color": "#FF9900"
+                "color": "#3366CC"
               },
               "2": {
                 "color": "#3366CC"
@@ -400,9 +400,9 @@
           },
           "options": {
             "colors": [
-              "#3366CC",
-              "#DC3912",
               "#FF9900",
+              "#DC3912",
+              "#3366CC",
               "#990099"
             ],
             "is3D": true,

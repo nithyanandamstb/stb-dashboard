@@ -29,7 +29,30 @@ const ComboChart = (props) => {
                   console.error(error);
           }); // This is just a sample script. Paste your real code (javascript or HTML) here.
         }
-        var renderData = chartData;
+        var renderData = [];
+        //renderData.push([chartinfo?.options?.hAxis?.title,chartinfo?.options?.vAxis?.title,{ role: "style" }, { role: "annotation"}]);
+        if(chartData) {
+          var clabel = chartData?.label;
+          var cdata = chartData?.data;
+          console.log("log",chartData?.data)
+          if(cdata && clabel) {
+            console.log("log",chartData)
+            renderData.push(clabel);
+            const sortedDatAsc = cdata.sort( (a,b) => b.id - a.id );
+            if(sortedDatAsc) {
+              sortedDatAsc.map((item,i)=>{
+                let subData = [item?.date];
+                chartData?.label.map((sitem,i)=>{
+                  if(sitem!="Month") {
+                    subData.push(item[sitem]);
+                  }                  
+                });
+                renderData.push(subData)
+              });
+            }
+          }          
+        }
+        console.log("log",renderData)
         /*renderData.push(["Status","Count"]);
         //console.log("log",chartData);
         if(chartData) {

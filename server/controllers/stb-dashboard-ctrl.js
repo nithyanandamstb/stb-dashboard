@@ -97,7 +97,8 @@ module.exports = ({ strapi }) => ({
         }        
     },
     async combo_properties_count(ctx) {
-        var dashBoard  = [];
+        var dashBoard  = {};
+        var dashBoard2  = [];
         try {            
             if(ctx?.query?.model_name && ctx?.query?.date_option) {
                 let searchType = ctx?.query?.search_type;
@@ -120,20 +121,22 @@ module.exports = ({ strapi }) => ({
                 dateLabel.push("Month");
                 if(dates) {
                     let frmEntryCount = await Promise.all(dates.map(async (date,idx) => (
-                        dataValue = [convertYearMonth(dateOption, date?.start_date)],
+                        //dataValue = [convertYearMonth(dateOption, date?.start_date)],
+                        dataValue = {"id":idx,"date":convertYearMonth(dateOption, date?.start_date)},
                         await Promise.all(statusVal.map(async (status, idx2) => (                            
                             dateLabel.push(status),
                             wQry ["updated_at"] = { $between: [date?.start_date,date?.end_date]},
-                            dataValue.push(await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status})),
+                            dataValue[status]=(await strapi.plugin('stb-dashboard').service('dataBaseService').count(modelName, { ...wQry, "status":status})),
                             {}
-                        ),dashBoard.splice(1,0,dataValue))),
+                        ),dashBoard2.splice(idx,0,dataValue))),
                         {}
                     )));
                 }
                 
                 var dL = [...new Set(dateLabel)];
                 //dashBoard.push(["data_label"]=dL);
-                dashBoard.splice(0,0,dL)
+                dashBoard['label'] = dL;
+                dashBoard['data'] = dashBoard2;
                 
 
             }            
