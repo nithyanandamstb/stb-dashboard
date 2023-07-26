@@ -13,7 +13,7 @@ const PieChart = (props) => {
           //console.log("log dataoption","Loading...."+dataVal)
           if(isLoading===false) setIsLoading(true);
           const axios = require('axios');
-          await axios.get('/stb-dashboard/pie-properties-count',{
+          await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/pie-properties-count',{
             params: {
                 model_name: chartinfo?.data?.model_name,
                 search_type: chartinfo?.data?.search_type,

@@ -14,7 +14,7 @@ const DashBoard = (props) => {
     const getCharsAndCards = async () => {
         if(isLoading===false) setIsLoading(true);
         const axios = require('axios');
-        await axios.get('/stb-dashboard/get-charts',{}).then(response => {
+        await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/get-charts',{}).then(response => {
             setChartConfigJson(response.data);
             setIsLoading(false);
         }).catch(error => {

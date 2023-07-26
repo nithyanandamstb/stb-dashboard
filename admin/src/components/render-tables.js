@@ -13,7 +13,7 @@ const TableBoard = (props) => {
     const limit = props?.tableinfo?.limit;
     if(isLoading===false) setIsLoading(true);
     const axios = require('axios');
-    await axios.get('/stb-dashboard/get_latest_activite_properties',{
+    await axios.get(process.env.STRAPI_ADMIN_STBDASHBOARD_APIURL+'/stb-dashboard/get_latest_activite_properties',{
       params: { search_type: search_type,  model_name: model_name, limit:limit, fields:fields }
     }).then(response => {
         setTabledData(response.data);
